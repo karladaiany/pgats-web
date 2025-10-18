@@ -15,7 +15,6 @@ import {
     getRandomBirthDate
 } from '../support/helpers'
 import { faker } from '@faker-js/faker'
-import { navegarParaLogin } from '../modules/menu'
 
 describe('Automation Exercise', () => {
     
@@ -26,7 +25,8 @@ describe('Automation Exercise', () => {
     it.only('Cadastrar um usuário', () => {
         const timestamp = new Date().getTime()
         
-        navegarParaLogin()
+        cy.get('a[href="/login"]').click()
+
         cy.get('[data-qa="signup-name"]').type(userData.name)
         cy.get('[data-qa="signup-email"]').type(getRandomEmail())
         
